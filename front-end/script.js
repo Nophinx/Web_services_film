@@ -1,8 +1,7 @@
-const API_KEY = '';
-const BASE_URL= 'https://api.themoviedb.org/3';
-const API_URL = 'http://localhost:5000/discover';
+const API_KEY = 'api_key=15381bda3cdd31aa141281d8f8f6e6eb';
+const API_URL_DEV = 'http://localhost:5000/';
 const IMG_URL = 'https://image.tmdb.org/t/p/w500';
-const searchURL = BASE_URL + '/search/movie?'+API_KEY;
+const searchURL = API_URL_DEV + 'discover/1';
 
 
 
@@ -11,7 +10,7 @@ const form = document.getElementById('form');
 const search = document.getElementById('search');
 
 
-getMovies(API_URL);
+getMovies(searchURL);
 
 function getMovies(url) {
     fetch(url).then(res => res.json()).then(data => {
@@ -59,8 +58,8 @@ form.addEventListener('submit', (e) => {
     const searchTerm = search.value ;
 
     if(searchTerm){
-        getMovies(searchURL+'&query='+searchTerm)
+        getMovies(API_URL_DEV+'/movie/'+searchTerm)
     }else{
-        getMovies(API_URL);
+        getMovies(API_URL_DEV+'/discover');
     }
 })
