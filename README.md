@@ -3,7 +3,7 @@
 Un site Web recuperant une liste de film via une API coté serveur(Python)
 
 
-## Dépendances python
+## Dependencies python
 
 Installation des dependances
 
@@ -49,4 +49,20 @@ INSERT INTO `likes` (`id`, `id_client`, `id_film`) VALUES
 (1, 1, 335787),
 (2, 1, 628900);
 COMMIT;
+```
+
+
+## Run Server
+
+Clone the project
+
+```bash
+  git clone https://github.com/Nophinx/Web_services_film.git
+```
+
+Go to the project directory
+
+```bash
+  cd back-end
+  python main.py
 ```
