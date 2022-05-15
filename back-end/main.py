@@ -10,8 +10,8 @@ import requests
 
 mydb = mysql.connector.connect(
   host="localhost",
-  user="root",
-  password="",
+  user="mathis",
+  password="mathis",
   database="film_api"
 )
 
@@ -47,8 +47,17 @@ def movie(query):
     result = {} 
     url = f"https://api.themoviedb.org/3/search/movie?api_key={API_KEY}&query={query}"
     result = requests.request("GET", url).json()
-    result["likes"] = get_likes(ID_USER)
-
     return json.dumps(result)
+    
+@app.route("/category/<name>")
+def category(name):
+    result = {} 
+    #https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&with_genres={name}&api_key={API_KEY}
+    url = f"https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&with_genres={name}&api_key={API_KEY}"
+    result = requests.request("GET", url).json()
+    return json.dumps(result)
+    
+
+    
 if __name__ == "__main__":
     app.run(debug=True)

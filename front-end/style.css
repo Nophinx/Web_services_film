@@ -5,13 +5,13 @@
 }
 
 :root{
-  --primazy-color: #22254b;
-  --secondary-color: #373b69;
-
+  --primazy-color: #1b1e45;
+  --secondary-color: #2f346f;
 }
 
 
-
+/*  --primazy-color: #22254b;
+  --secondary-color: #373b69;*/
 body {
   background-color: var(--primazy-color);
   font-family: 'Poppins', sans-serif;
@@ -24,7 +24,9 @@ body {
     justify-content: flex-end;
     background-color: var(--secondary-color);
   }
-
+  .likes{
+    color: #7378c5; 
+  }
   .search {
     background-color: transparent;
     border: 2px solid var(--primazy-color);
@@ -41,8 +43,18 @@ body {
   }
 
   .search::placeholder{
-    color: #7378c5;
+    color: #7378c5; 
+    border-radius: 50px;
+    font-size: 1rem;
   }
+.maliste{
+  color: #fff;
+}
+
+.titre_film{
+  color: #fff;
+  margin-left: 30px;
+}
 main{
   display: flex;
   flex-wrap: wrap;
@@ -109,3 +121,30 @@ main{
   .movie:hover .overview{
      transform: translateY(0);
   }
+
+#tags{
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto;
+}
+
+.tag{
+  color: white;
+  padding: 10px 20px;
+  background-color: orange;
+  border-radius: 50px;
+  margin: 15px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.tag.highlight{
+  background-color: red;
+}
+
+.no-results{
+  color: white;
+}
