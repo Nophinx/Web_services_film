@@ -3,6 +3,7 @@ const API_URL_DEV = 'http://localhost:5000/';
 const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 const searchURL = API_URL_DEV + 'discover/1';
 
+/* Les genres sont stocker dans un tableau */
 const genres = [
     {
       "id": 28,
@@ -87,6 +88,7 @@ const form = document.getElementById('form');
 const search = document.getElementById('search');
 const tagsEL = document.getElementById('tags');
 
+/* Selection des genres */
 var selectedGenre = []
 setGenre();
 function setGenre(){
@@ -117,12 +119,13 @@ function setGenre(){
         tagsEL.append(t);
     })
 }
-
+/*permet de supprimer les tag selectionné */
 function highlightSelection(){
    const tags = document.querySelectorAll('.tag');
    tags.forEach(tag=>{
        tag.classList.remove('highlight')
    })
+   
    clearBtn()
     if(selectedGenre.length !=0){
         selectedGenre.forEach(id =>{
@@ -131,7 +134,7 @@ function highlightSelection(){
         })
     }
 }
-
+/*permet de supprimer les tagt selectionné */
 function clearBtn(){
     let clearBtn = document.getElementById('clear');
     if(clearBtn){
@@ -151,7 +154,7 @@ function clearBtn(){
 }
 
 getMovies(searchURL);
-
+/*Message d'erreur si pas resultat */
 function getMovies(url) {
     fetch(url).then(res => res.json()).then(data => {
         console.log(data.results)
@@ -166,7 +169,7 @@ function getMovies(url) {
 function showMovies(data) {
      
     main.innerHTML='';
-
+  /* inserer du code HTML en JS via le inner html */
     data.forEach(movie => {
         const {title, poster_path, vote_average, overview} = movie;
         const movieEl = document.createElement('div');
@@ -190,7 +193,7 @@ function showMovies(data) {
         main.appendChild(movieEl);
     });
 }
-
+/* fonction qui permet de colorer les notes en fonction de leur chiffre */
 function getColor(vote){
     if(vote>= 8){
         return 'green'
@@ -200,7 +203,7 @@ function getColor(vote){
         return 'red'
     }
 }
-
+/*fonction de recherche des filmes */
 form.addEventListener('submit', (e) => {
   e.preventDefault();
 
